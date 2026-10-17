@@ -1,0 +1,14 @@
+
+{
+  "name": "ass8",
+  "version": "1.0.0",
+  "description": "Student Records REST API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NDARBA | Admin Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body{background:#f4f7fb;font-family:Segoe UI,Arial,sans-serif;color:#172033}
+    .topbar{background:linear-gradient(100deg,#2864f1,#fff,#ec0b26);padding:15px 0;box-shadow:0 3px 12px #0001}
+    .brand{font-weight:900;letter-spacing:.08em;color:#111}
+    .wrap{max-width:1050px;margin:35px auto;padding:0 16px}
+    .panel{background:#fff;border:1px solid #e5eaf2;border-radius:16px;padding:24px;box-shadow:0 10px 30px #17365d0c;margin-bottom:22px}
+    .notice{border:1px solid #e5eaf2;border-radius:10px;padding:14px;margin-top:12px;background:#fbfcff}
+    .notice h3{font-size:1.05rem;font-weight:750}
+    .muted{color:#667085}
+  </style>
+</head>
+<body>
+  <header class="topbar"><div class="container d-flex align-items-center justify-content-between gap-3">
+    <div class="brand">NDARBA · ADMIN</div>
+    <button id="logoutBtn" class="btn btn-dark btn-sm">Log out</button>
+  </div></header>
+  <main class="wrap">
+    <div class="mb-4">
+      <h1 class="h2 fw-bold">Admin dashboard</h1>
+      <p class="muted mb-0">Signed in as <strong id="adminUsername">…</strong></p>
+    </div>
+    <section class="panel">
+      <h2 class="h4 fw-bold">Create a notice</h2>      
+      <form id="noticeForm">
+        <label for="noticeTitle" class="form-label">Notice title</label>
+        <input
+          id="noticeTitle"
+          class="form-control"
+          maxlength="160"
+          required
+        >
+
+        <label for="noticeBody" class="form-label mt-3">Notice details</label>
+        <textarea
+          id="noticeBody"
+          class="form-control"
+          rows="4"
+          maxlength="5000"
+          required
+        ></textarea>
+
+        <label for="expiresAt">Expiry Date and Time</label>
+        <input type="datetime-local" id="expiresAt" name="expiresAt">
+        <div class="form-text">
+          Leave empty if the notice should not expire automatically.
+        </div>
+
+        <div class="form-check mt-3">
+          <input
+            id="noticePublished"
+            class="form-check-input"
+            type="checkbox"
+            checked
+          >
+          <label class="form-check-label" for="noticePublished">
+            Publish notice immediately
+          </label>
+        </div>
+
+        <button class="btn btn-primary mt-3" type="submit">
+          Save notice
+        </button>
+        <p id="formMessage" class="mt-2 mb-0" role="status"></p>
+      </form>
+
+    </section>
+    <section class="panel">
+      <div class="d-flex justify-content-between align-items-center gap-3">
+        <h2 class="h4 fw-bold mb-0">Saved notices</h2>
+        <button id="refreshBtn" class="btn btn-outline-primary btn-sm">Refresh</button>
+      </div>
+      <div id="noticeList" class="mt-3"><p class="muted">Loading notices…</p></div>
+    </section>
+  </main>
+  <script>
+    const expiryInput = document.getElementById("expiresAt");
+
+    function setMinimumExpiry() {
+      const now = new Date();
+      now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+
+      expiryInput.min = now.toISOString().slice(0, 16);
+    }
+
+    setMinimumExpiry();
+  </script>
+  <script>
+    
+    async function api(url, options = {}) {
+      const response = await fetch(url, { credentials: "same-origin", ...options });
+      if (response.status === 401) { window.location.replace("/login.html"); throw new Error("Session expired."); }
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(data.error || "Request failed.");
+      return data;
+    }
+
+    async function loadMe() {
+      const me = await api("/api/me");
+      document.getElementById("adminUsername").textContent = me.username;
+    }
+
+    async function loadNotices() {
+      const list = document.getElementById("noticeList");
+      try {
+        const notices = await api("/api/notices");
+        list.replaceChildren();
+        if (!notices.length) {
+          const p = document.createElement("p");
+          p.className = "muted";
+          p.textContent = "No notices yet.";
+          list.append(p);
+          return;
+        }
+        notices.forEach((notice) => {
+          const card = document.createElement("article");
+          card.className = "notice";
+          const title = document.createElement("h3");
+          title.textContent = notice.title;
+          const body = document.createElement("p");
+          body.style.whiteSpace = "pre-wrap";
+          body.textContent = notice.body;
+          const date = document.createElement("small");
+          date.className = "muted d-block mb-2";
+          date.textContent = notice.created_at;
+          
+          const status = document.createElement("p");
+          status.className = "small mb-2";
+          status.textContent = notice.is_published
+            ? "Status: Published"
+            : "Status: Draft";
+
+          const expiry = document.createElement("p");
+          expiry.className = "small muted mb-2";
+          expiry.textContent = notice.expires_at
+            ? "Expires: " + new Date(notice.expires_at).toLocaleString()
+            : "Expiry: Never";
+
+          const remove = document.createElement("button");
+          remove.className = "btn btn-outline-danger btn-sm";
+          remove.textContent = "Delete";
+          remove.addEventListener("click", async () => {
+            if (!confirm("Delete this notice?")) return;
+            try { await api("/api/notices/" + notice.id, { method: "DELETE" }); await loadNotices(); }
+            catch (e) { alert(e.message); }
+          });
+          card.append(title, date, status, expiry, body, remove);
+          list.append(card);
+        });
+      } catch (e) { list.textContent = e.message; }
+    }
+
+    document.getElementById("noticeForm").addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const message = document.getElementById("formMessage");
+      message.textContent = "";
+      try {
+        await api("/api/notices", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            
+              title: document.getElementById("noticeTitle").value.trim(),
+              body: document.getElementById("noticeBody").value.trim(),
+              is_published: document.getElementById("noticePublished").checked,
+              expires_at: document.getElementById("expiresAt").value || null
+          
+          })
+        });
+        event.target.reset();
+        message.className = "mt-2 mb-0 text-success";
+        message.textContent = "Notice saved.";
+        await loadNotices();
+      } catch (e) {
+        message.className = "mt-2 mb-0 text-danger";
+        message.textContent = e.message;
+      }
+    });
+
+    document.getElementById("refreshBtn").addEventListener("click", loadNotices);
+    document.getElementById("logoutBtn").addEventListener("click", async () => {
+      try { const result = await api("/api/logout", { method: "POST" }); window.location.replace(result.redirect || "/login.html"); }
+      catch (e) { window.location.replace("/login.html"); }
+    });
+
+    (async () => {
+      try { await loadMe(); await loadNotices(); }
+      catch (e) { if (e.message !== "Session expired.") alert(e.message); }
+    })();
+  </script>
+</body>
+</html>

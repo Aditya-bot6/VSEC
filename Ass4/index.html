@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Registration</title>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="registration-container">
+        <div class="form-header">
+            <h2>Employee Registration</h2>
+            <p>Enter your details to register</p>
+        </div>
+        
+        <form id="employeeForm">
+            
+            <div class="input-group">
+                <label for="empName">Full Name</label>
+                <input type="text" id="empName" placeholder="e.g. John Doe">
+                <small class="error-msg" id="nameError"></small>
+            </div>
+
+            
+            <div class="input-group">
+                <label for="empEmail">Email Address</label>
+                <input type="text" id="empEmail" placeholder="john@example.com">
+                <small class="error-msg" id="emailError"></small>
+            </div>
+
+            
+            <div class="input-group">
+                <label for="empPassword">Password</label>
+                <input type="password" id="empPassword" placeholder="Minimum 8 characters">
+                <small class="error-msg" id="passwordError"></small>
+            </div>
+
+            
+            <div class="input-group">
+                <label for="empPhone">Phone Number</label>
+                <input type="text" id="empPhone" placeholder="10-digit mobile number">
+                <small class="error-msg" id="phoneError"></small>
+            </div>
+
+            
+            <div class="input-group">
+                <label for="empDept">Department</label>
+                <select id="empDept">
+                    <option value="">-- Select Department --</option>
+                    <option value="Information Technology (IT)">Information Technology (IT)</option>
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="Human Resources">Human Resources</option>
+                    <option value="Finance">Finance</option>
+                </select>
+                <small class="error-msg" id="deptError"></small>
+            </div>
+
+            <button type="submit">Register</button>
+        </form>
+        
+        
+        <div id="successMessage" class="hidden">
+            Registration Successful! Welcome to the team.
+        </div>
+    </div>
+
+    
+    <script src="script.js"></script>
+</body>
+</html>

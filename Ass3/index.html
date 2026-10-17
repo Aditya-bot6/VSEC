@@ -1,0 +1,354 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Result Management System</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f1f5f9;
+            color: #222;
+        }
+
+        header {
+            background: #173b70;
+            color: white;
+            text-align: center;
+            padding: 25px 15px;
+        }
+
+        header h1 {
+            margin: 0 0 10px;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        section {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px #00000012;
+        }
+
+        h2 {
+            color: #173b70;
+            margin-top: 0;
+        }
+
+        form {
+            display: grid;
+            gap: 12px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #bbb;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        .marks-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+        }
+
+        .marks-grid div {
+            display: grid;
+            gap: 8px;
+        }
+
+        button {
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            background: #176b45;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #104c30;
+        }
+
+        .topper-box {
+            background: #fff7d6;
+            border-left: 5px solid #e5a000;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        th {
+            background: #173b70;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f1f5f9;
+        }
+
+        .topper-row {
+            background: #fff0b3 !important;
+            font-weight: bold;
+        }
+
+        footer {
+            background: #173b70;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+        @media (max-width: 700px) {
+            .marks-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            main {
+                padding: 10px;
+            }
+
+            header h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Student Result Management System</h1>
+        <p>Calculate Marks, Percentage and Identify the Topper</p>
+    </header>
+
+    <main>
+
+        <section>
+            <h2>Add Student Result</h2>
+
+            <form id="resultForm">
+                <label for="studentName">Student Name</label>
+                <input type="text" id="studentName"
+                       placeholder="Enter student name" required>
+
+                <label for="rollNo">Roll Number</label>
+                <input type="text" id="rollNo"
+                       placeholder="Enter roll number" required>
+
+                <h3>Subject Marks (Out of 100)</h3>
+
+                <div class="marks-grid">
+                    <div>
+                        <label for="m1">Subject 1</label>
+                        <input type="number" id="m1" min="0" max="100"
+                               step="any" required>
+                    </div>
+
+                    <div>
+                        <label for="m2">Subject 2</label>
+                        <input type="number" id="m2" min="0" max="100"
+                               step="any" required>
+                    </div>
+
+                    <div>
+                        <label for="m3">Subject 3</label>
+                        <input type="number" id="m3" min="0" max="100"
+                               step="any" required>
+                    </div>
+
+                    <div>
+                        <label for="m4">Subject 4</label>
+                        <input type="number" id="m4" min="0" max="100"
+                               step="any" required>
+                    </div>
+
+                    <div>
+                        <label for="m5">Subject 5</label>
+                        <input type="number" id="m5" min="0" max="100"
+                               step="any" required>
+                    </div>
+                </div>
+
+                <button type="submit">Add Student</button>
+            </form>
+        </section>
+
+        <section class="topper-box">
+            <h2>Class Topper</h2>
+            <p id="topper">No student records available.</p>
+        </section>
+
+        <section>
+            <h2>Student Records</h2>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Roll Number</th>
+                            <th>Total Marks</th>
+                            <th>Percentage</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="studentTable">
+                        <!-- Student records appear here -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Student Result Management System</p>
+    </footer>
+
+    <script>
+        const form = document.getElementById("resultForm");
+        const studentTable = document.getElementById("studentTable");
+        const topperDisplay = document.getElementById("topper");
+
+        const students = [];
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById("studentName")
+                .value.trim();
+
+            const rollNo = document.getElementById("rollNo")
+                .value.trim();
+
+            const marks = [
+                "m1", "m2", "m3", "m4", "m5"
+            ].map(id => {
+                return Number(document.getElementById(id).value);
+            });
+
+            if (!name || !rollNo) {
+                alert("Please enter the student name and roll number.");
+                return;
+            }
+
+            const invalidMarks = marks.some((mark, index) => {
+                const input = document.getElementById("m" + (index + 1));
+
+                return input.value.trim() === "" ||
+                       !Number.isFinite(mark) ||
+                       mark < 0 || mark > 100;
+            });
+
+            if (invalidMarks) {
+                alert("Enter marks between 0 and 100 for every subject.");
+                return;
+            }
+
+            const duplicate = students.some(student =>
+                student.rollNo.toLowerCase() === rollNo.toLowerCase()
+            );
+
+            if (duplicate) {
+                alert("This roll number already exists.");
+                return;
+            }
+
+            const total = marks.reduce((sum, mark) => sum + mark, 0);
+            const percentage = (total / 500) * 100;
+
+            students.push({
+                name: name,
+                rollNo: rollNo,
+                total: total,
+                percentage: percentage
+            });
+
+            displayStudents();
+            form.reset();
+        });
+
+        function displayStudents() {
+            studentTable.innerHTML = "";
+
+            const highestTotal = Math.max(
+                ...students.map(student => student.total)
+            );
+
+            students.forEach(student => {
+                const row = document.createElement("tr");
+
+                if (student.total === highestTotal) {
+                    row.classList.add("topper-row");
+                }
+
+                const values = [
+                    student.name,
+                    student.rollNo,
+                    student.total + " / 500",
+                    student.percentage.toFixed(2) + "%"
+                ];
+
+                values.forEach(value => {
+                    const cell = document.createElement("td");
+                    cell.textContent = value;
+                    row.appendChild(cell);
+                });
+
+                studentTable.appendChild(row);
+            });
+
+            if (students.length === 0) {
+                topperDisplay.textContent =
+                    "No student records available.";
+                return;
+            }
+
+            const toppers = students.filter(student =>
+                student.total === highestTotal
+            );
+
+            topperDisplay.textContent = toppers.map(student =>
+                student.name + " (Roll No. " + student.rollNo + ")" +
+                " — " + student.total + "/500, " +
+                student.percentage.toFixed(2) + "%"
+            ).join(" | ");
+        }
+    </script>
+
+</body>
+</html>

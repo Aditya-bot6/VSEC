@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ROLLBALL NASHIK</title>
+
+  <link rel="icon" href="favicon-32x32.png" type="png">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <link rel="canonical" href="https://ndarba.org/index.html">
+
+
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+
+  <!-- Include Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+     h1 {
+      margin-bottom: 20px;
+    }
+    #top{
+      display: block;
+      text-align: center;
+      width: 100%;
+      padding-top: 20px;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .gallery img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 8px;
+      cursor: pointer;
+      border: 2px solid #ccc;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+      border-color: #555;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 10;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.9);
+    }
+
+    .modal-content {
+      display: block;
+      max-width: 100vw;
+      max-height: 80vh;
+      margin: auto;
+      border-radius: 10px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: auto;
+      height: auto;
+      image-rendering: auto;
+      transform: translate(-50%, -50%);
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 35px;
+      color: white;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+    <div class="container">
+    
+      <a class="navbar-brand" href="#">
+        <div id="logo"></div>
+        <span class="brand-text ms-2">NDARBA</span>
+      </a>
+
+      <li class="nav-item me-3">
+        <button id="theme-toggle" class="btn btn-sm btn-outline-dark">🌙 / ☀️</button>
+      </li>
+    
+      <div id="extra-logos" class="d-flex flex-row align-items-center">
+        <a href="https://rollballindia.org/" target="_blank">
+         <div class="RBFI me-2"></div>
+        </a>
+        
+        <a href="https://maharashtrarollball.org/" target="_blank">
+          <div class="MRBA me-2"></div>
+        </a>
+      </div>
+
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <a href="login.html" target="_blank" class="btn btn-sm btn-view" style="height: 30px; margin-top: 6px;">Admin login</a>
+          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="doc.html">Documents</a></li>
+          <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
+          <li class="nav-item"><a class="nav-link" href="gal.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div style="height: 90px;"></div>
+
+  <div class="gallery">
+    <div id="top"><h2>Gallery</h2></div>
+    <img src="https://drive.google.com/thumbnail?id=1eucqwHvLqLGBTuMVXVwh3TI-_TIYUv83&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=13uodhyGsxZ-wLwYDjDfCS1Pr-6MlucKV&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=1CR5C9iOrRwWnhXEj2zPpsZEcsbLpka_n&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=1CszUsudoXUul3G4UT1zpCDePSajdCElg&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=1gpArHhLjny96TpphxFl2DJWKNWAw8WEx&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=1LyeUpUvAn_ZxHc6TVyqoLxH-auyRq9P6&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=1vRKDpzLVDPlwE2Zp_BJa0AZ4ROotKkjd&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=1tr18yfm0H6MtZGsiNXJjlg0-di-wrKsv&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=1braqHnRyjpZa_1J5TSTrDl_CiDvFl-Ja&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=1Vb3kgMu09uboLlV6OvUaNn5j4B3plz-a&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=1vAAWgmCmsmi8Z1zgFwGjPhy4poSMH37q&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=1Fwx5YJl0YMYCzn_CwHLiRRwXLklQyXh_&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=1_u_B51cSCEaEHnTGYP_wPfdBho6YpCzG&sz=s800" data-type="image"> 
+    <img src="https://drive.google.com/thumbnail?id=1NdKxfkw0y20sJQfryvB9coCoBbWUf1qe&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=1R4ZZQlV8XJlxpG4xPy4i6ZE_zuNcIene&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=16UIrWOKhKx-x7YowWEfIYmYsrn2lr56I&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=1G73O5lSdEPlYbwz9paL1RDoNM782acGe&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=14ekw-NzqWZn76bfJXUWJCRMO4BWSAtNk&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=1cfxFZPj7scIPskqUyfo2AMZAJeYM6WyY&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=1NMKUGpBFFGu4yWiwUrmp-3Ci3YpZJfuh&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=1XxhmNSCsBH-V_stJSbfb9umO4VtWSP6Y&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=1-E7TDRDE6yn5aIlHBI_YYtUX_Cu2ALzs&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=1FKW1i5cr0TUv8cPt9Bt1LAebUB28JFyc&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=1izaMQnofHpVdRNyt07cI4p8vri25ykDL&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=1NMS9k_WWO86fk5Hl8dpEMNTVqd68uHKe&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=1JPQ_J8naNJNjvr6F7eU__Sqpp3KVNwrz&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=1-FCbGSvQfy-8IsoFJd45rMvdJTdcCT1U&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=1OlTglmUHv6ywxqKSnPNFJhIgISGa6jLs&sz=s800" data-type="image">
+    <img src="https://drive.google.com/thumbnail?id=1CVoBuJ2mh1WuigTWVrAVMTTXnzVUZq5t&sz=s800" data-type="image">
+    <!-- Add more images here -->
+  </div>
+
+  <!-- Modal Structure -->
+  <div id="modal" class="modal">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <img class="modal-content" id="modalImage">
+    </div>
+
+ 
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row text-center text-md-start">
+        <div class="col-md-4 col-12 mb-4">
+          <div class="title">Important Links</div>
+          <div class="footer-menu">
+            <ul>
+              <li><a href="contact.html">Contact Us</a></li>
+              <li><a href="about.html">About Us</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-4 col-12 mb-4">
+          <div class="title">Development Activities</div>
+          <div class="footer-menu">
+            <ul>
+              <li><a href="coach.html">Coaching</a></li>
+              <li><a href="t&c.html">Terms & conditions</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-4 col-12 mb-4">
+          <div class="title">Contact</div>
+          <div class="footer-menu">
+            <ul>
+              <li>Email:<a href="mailto:rollballnashik2002@gmail.com">rollballnashik2002@gmail.com</a></li>
+              <li>Phone: <a href="tel:7249074416">7249074416</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-4">
+        &copy; Rollball Nashik. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const modal = document.getElementById("modal");
+    const modalImg = document.getElementById("modalImage");
+    const images = document.querySelectorAll(".gallery img");
+
+    let currentIndex = 0;
+    let startX = 0;
+
+    // Open modal
+    images.forEach((img, index) => {
+      img.addEventListener("click", function () {
+        currentIndex = index;
+        showImage();
+        modal.style.display = "block";
+      });
+    });
+
+    function showImage() {
+      modalImg.src = images[currentIndex].src;
+    }
+
+    function closeModal() {
+      modal.style.display = "none";
+    }
+
+    // Next & Previous
+    function nextImage() {
+      currentIndex = (currentIndex + 1) % images.length;
+      showImage();
+    }
+
+    function prevImage() {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      showImage();
+    }
+
+    // Keyboard support
+    document.addEventListener("keydown", function (e) {
+      if (modal.style.display === "block") {
+        if (e.key === "ArrowRight") nextImage();
+        if (e.key === "ArrowLeft") prevImage();
+        if (e.key === "Escape") closeModal();
+      }
+    });
+
+    // Touch swipe support (mobile)
+    modalImg.addEventListener("touchstart", function (e) {
+      startX = e.touches[0].clientX;
+    });
+
+    modalImg.addEventListener("touchend", function (e) {
+      let endX = e.changedTouches[0].clientX;
+      let diff = startX - endX;
+
+      if (Math.abs(diff) > 50) {
+        diff > 0 ? nextImage() : prevImage();
+      }
+    });
+
+    // Click outside image closes modal
+    modal.addEventListener("click", function (e) {
+      if (e.target === modal) closeModal();
+    });
+  </script>
+
+  <script>
+    // Function to apply theme
+    function applyTheme(theme) {
+      if (theme === 'dark') {
+        document.body.classList.add('dark');
+        document.getElementById('theme-toggle').textContent = '☀️'; // next mode is light
+      } else {
+        document.body.classList.remove('dark');
+        document.getElementById('theme-toggle').textContent = '🌙'; // next mode is dark
+      }
+    }
+
+    // Load theme from localStorage on page load
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    applyTheme(savedTheme);
+
+    // Toggle theme button
+    document.getElementById('theme-toggle').addEventListener('click', () => {
+      const currentTheme = document.body.classList.contains('dark') ? 'dark' : 'light';
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      applyTheme(newTheme);
+      localStorage.setItem('theme', newTheme);
+    });
+  </script>
+</body>
+</html>

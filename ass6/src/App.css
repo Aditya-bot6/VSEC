@@ -1,0 +1,241 @@
+
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #0f172a, #1e1b4b, #312e81);
+  color: #1e293b;
+}
+
+/* Main Container */
+.container {
+  width: 100%;
+  max-width: 650px;
+  margin: 20px auto;
+  padding: 35px;
+  background: rgba(255, 255, 255, 0.97);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 24px;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.7s ease;
+}
+
+/* Main Heading */
+h1 {
+  text-align: center;
+  font-size: clamp(24px, 4vw, 34px);
+  font-weight: 800;
+  line-height: 1.3;
+  margin-bottom: 30px;
+  background: linear-gradient(90deg, #4f46e5, #9333ea, #db2777);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+h2 {
+  color: #312e81;
+  font-size: 21px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+/* Form Layout */
+form {
+  padding: 25px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  transition: box-shadow 0.3s ease;
+}
+
+form:hover {
+  box-shadow: 0 10px 30px rgba(79, 70, 229, 0.1);
+}
+
+/* Input Fields */
+input {
+  display: block;
+  width: 100%;
+  padding: 15px 16px;
+  margin: 14px 0;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #0f172a;
+  font-family: inherit;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+input::placeholder {
+  color: #94a3b8;
+}
+
+input:hover {
+  border-color: #a5b4fc;
+}
+
+input:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.14);
+  transform: translateY(-2px);
+}
+
+/* Submit Button */
+button {
+  display: block;
+  width: 100%;
+  margin-top: 22px;
+  padding: 15px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  color: white;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.25);
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: linear-gradient(135deg, #4338ca, #6d28d9);
+  box-shadow: 0 12px 25px rgba(79, 70, 229, 0.35);
+  transform: translateY(-3px);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* Student Details Card */
+.details {
+  margin-top: 30px;
+  padding: 25px;
+  border: 1px solid #c7d2fe;
+  border-radius: 18px;
+  background: linear-gradient(145deg, #eef2ff, #faf5ff);
+  box-shadow: 0 10px 25px rgba(79, 70, 229, 0.08);
+  animation: fadeIn 0.5s ease;
+}
+
+.details h2 {
+  padding-bottom: 15px;
+  border-bottom: 2px solid #c7d2fe;
+}
+
+.details p {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  padding: 13px 10px;
+  margin: 7px 0;
+  border-radius: 9px;
+  color: #334155;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+  transition: background 0.25s ease;
+}
+
+.details p:hover {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.details strong {
+  min-width: 115px;
+  color: #4338ca;
+  font-weight: 600;
+}
+
+/* Empty State Message */
+.container > p {
+  margin-top: 25px;
+  text-align: center;
+  color: #64748b;
+  font-size: 14px;
+}
+
+/* Animations */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  body {
+    padding: 15px 12px;
+  }
+
+  .container {
+    padding: 22px 16px;
+    margin: 10px auto;
+    border-radius: 18px;
+  }
+
+  h1 {
+    font-size: 25px;
+    margin-bottom: 24px;
+  }
+
+  form,
+  .details {
+    padding: 18px;
+  }
+
+  h2 {
+    font-size: 19px;
+  }
+
+  input {
+    padding: 13px;
+  }
+
+  .details p {
+    padding: 10px 6px;
+  }
+}
+
+/* Accessibility: Reduce animations when requested */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

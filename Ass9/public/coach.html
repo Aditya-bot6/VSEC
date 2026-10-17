@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Us - Rollball Nashik</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  
+
+  <style>
+     html, body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    body {
+      padding-top: 60px; /* space for fixed navbar */
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      background-color: #f8f9fa;
+      color: #212529;
+    }
+
+      .navbar-custom {
+      background: linear-gradient(to right, #2864f1, white, #ec0b26); /* Saffron, White, Green */
+      padding: 0.5rem 1rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .navbar-custom .navbar-nav .nav-link {
+      color: #000 !important;
+      font-weight: 600;
+      margin: 0 10px;
+      transition: 0.3s ease;
+    }
+
+    .navbar-custom .navbar-nav .nav-link:hover {
+      color: #138808 !important; /* Green */
+      text-decoration: underline;
+    }
+
+    .navbar-custom .navbar-brand .brand-text {
+      color: #000;
+      font-weight: bold;
+    }
+
+    #logo {
+      height: 40px;
+      width: 40px;
+      background-image: url('logo.jpeg'); 
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 5px;
+    }
+    .RFI{
+      background-image: url(RFI.png);
+      width: 50px;
+      height: 55px;
+      left: 0px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 50%;
+    }
+    .RBFI{
+      background-image: url(RBFI.png);
+      width: 33px;
+      height: 35px;
+      left: 0px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 50%;
+    }
+    .MRBA{
+      background-image: url(MRBA.png);
+      width: 35px;
+      height: 35px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 50%;
+    }
+
+    @media (max-width: 767px) {
+    body {
+    padding-top: 60px; /* Slightly less on mobile */
+      }
+    }
+    /* Navbar Brand (Logo + Text) */
+
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .container.content-box {
+      max-width: 900px;
+      margin: 0 auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .titles h4 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #0056b3;
+      border-bottom: 2px solid #dee2e6;
+      padding-bottom: 10px;
+    }
+
+    h5 {
+      font-size: 20px;
+      margin-top: 30px;
+      margin-bottom: 10px;
+      color: #343a40;
+    }
+
+    p {
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+
+    a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .container.content-box {
+        padding: 20px;
+      }
+
+      .titles h4 {
+        font-size: 24px;
+      }
+
+      h5 {
+        font-size: 18px;
+      }
+    }
+       /* Footer */
+    footer {
+      background: linear-gradient(to top, #2864f1, white, #ec0b26);
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 3rem;
+      border: 1px solid black;
+
+    }
+
+    .footer-menu ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-menu ul li {
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <div id="logo"></div>
+           <span class="brand-text ms-2">NDARBA</span>
+      </a>
+      <li class="nav-item me-3">
+        <button id="theme-toggle" class="btn btn-sm btn-outline-dark">🌙 / ☀️</button>
+      </li>
+      
+      <div id="extra-logos" class="d-flex flex-row align-items-center">
+        <a href="https://rollballindia.org/" target="_blank">
+         <div class="RBFI me-2"></div>
+        </a>
+        
+        <a href="https://maharashtrarollball.org/" target="_blank">
+          <div class="MRBA me-2"></div>
+        </a>
+      </div>
+
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="doc.html">Documents</a></li>
+          <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
+          <li class="nav-item"><a class="nav-link" href="gal.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div style="height: 100px;"></div>
+
+  <!-- Terms Section -->
+  <section class="content-info">
+    <div class="container content-box">
+      <div class="panel-box">
+        <div class="titles">
+          <h4>Coaching</h4>
+        </div>
+
+        <div class="info-panel">
+            <p>
+                Coaching At Roll Ball Nashik, we believe in building strong fundamentals, discipline, and team spirit through professional
+                coaching and regular practice. Our coaching program is designed for players of all levels – from beginners to advanced
+                athletes. Whether you're just starting out or want to sharpen your skills for competitive matches, our experienced coaches
+                and senior players will guide you at every step.
+            </p>
+
+            <h4>What We Offer:</h4>
+
+            <h6>Structured Training Sessions</h6>
+            <p>Regular practice focusing on skating, ball control, passing, defending, and strategy.</p>
+
+            <h6>Team Development</h6>
+            <p>We train as a unit to build coordination and match readiness. Our team represents Nashik in various tournaments.</p>
+
+            <h6>Skill Building</h6>
+            <p>Individual attention to each player to help improve their strengths and work on weak areas.</p>
+
+            <h6>Beginner-Friendly</h6>
+            <p>New to roll ball? No problem! We’ll help you learn the basics and get comfortable on the court.</p>
+
+            <h4>Who Can Join:</h4>
+
+            <p>Boys and girls aged 6 and above</p>
+
+            <p>Beginners, intermediates, and advanced players</p>
+
+            <p>Anyone passionate about Roll Ball and committed to learning</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <footer>
+    <div class="container">
+      <div class="row text-center text-md-start">
+        <div class="col-md-4 col-12 mb-4">
+          <div class="title">Important Links</div>
+          <div class="footer-menu">
+            <ul>
+              <li><a href="contact.html">Contact Us</a></li>
+              <li><a href="about.html">About Us</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-4 col-12 mb-4">
+          <div class="title">Development Activities</div>
+          <div class="footer-menu">
+            <ul>
+              <li><a href="coach.html">Coaching</a></li>
+              <li><a href="t&c.html">Terms & conditions</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-4 col-12 mb-4">
+          <div class="title">Contact</div>
+          <div class="footer-menu">
+            <ul>
+              <li>Email:<a href="mailto:rollballnashik2002@gmail.com">:rollballnashik2002@gmail.com</a></li>
+              <li>Phone: <a href="tel:7249074416">7249074416</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-4">
+        &copy; Rollball nashik. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Function to apply theme
+    function applyTheme(theme) {
+      if (theme === 'dark') {
+        document.body.classList.add('dark');
+        document.getElementById('theme-toggle').textContent = '☀️'; // next mode is light
+      } else {
+        document.body.classList.remove('dark');
+        document.getElementById('theme-toggle').textContent = '🌙'; // next mode is dark
+      }
+    }
+
+    // Load theme from localStorage on page load
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    applyTheme(savedTheme);
+
+    // Toggle theme button
+    document.getElementById('theme-toggle').addEventListener('click', () => {
+      const currentTheme = document.body.classList.contains('dark') ? 'dark' : 'light';
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      applyTheme(newTheme);
+      localStorage.setItem('theme', newTheme);
+    });
+  </script>
+
+</body>
+</html>
+``

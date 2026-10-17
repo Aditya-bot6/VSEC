@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Us - Rollball Nashik</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  
+
+  <style>
+     html, body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    body {
+      padding-top: 60px; /* space for fixed navbar */
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      background-color: #f8f9fa;
+      color: #212529;
+    }
+
+      .navbar-custom {
+      background: linear-gradient(to right, #2864f1, white, #ec0b26); /* Saffron, White, Green */
+      padding: 0.5rem 1rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .navbar-custom .navbar-nav .nav-link {
+      color: #000 !important;
+      font-weight: 600;
+      margin: 0 10px;
+      transition: 0.3s ease;
+    }
+
+    .navbar-custom .navbar-nav .nav-link:hover {
+      color: #138808 !important; /* Green */
+      text-decoration: underline;
+    }
+
+    .navbar-custom .navbar-brand .brand-text {
+      color: #000;
+      font-weight: bold;
+    }
+
+    #logo {
+      height: 40px;
+      width: 40px;
+      background-image: url('logo.jpeg'); 
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 5px;
+    }
+    .RFI{
+      background-image: url(RFI.png);
+      width: 50px;
+      height: 55px;
+      left: 0px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 50%;
+    }
+    .RBFI{
+      background-image: url(RBFI.png);
+      width: 33px;
+      height: 35px;
+      left: 0px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 50%;
+    }
+    .MRBA{
+      background-image: url(MRBA.png);
+      width: 35px;
+      height: 35px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 50%;
+    }
+
+    @media (max-width: 767px) {
+    body {
+    padding-top: 60px; /* Slightly less on mobile */
+      }
+    }
+    /* Navbar Brand (Logo + Text) */
+
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .container.content-box {
+      max-width: 900px;
+      margin: 0 auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .titles h4 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #0056b3;
+      border-bottom: 2px solid #dee2e6;
+      padding-bottom: 10px;
+    }
+
+    h5 {
+      font-size: 20px;
+      margin-top: 30px;
+      margin-bottom: 10px;
+      color: #343a40;
+    }
+
+    p {
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+
+    a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .container.content-box {
+        padding: 20px;
+      }
+
+      .titles h4 {
+        font-size: 24px;
+      }
+
+      h5 {
+        font-size: 18px;
+      }
+    }
+       /* Footer */
+    footer {
+      background: linear-gradient(to top, #2864f1, white, #ec0b26);
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 3rem;
+      border: 1px solid black;
+
+    }
+
+    .footer-menu ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-menu ul li {
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <div id="logo"></div>
+           <span class="brand-text ms-2">NDARBA</span>
+      </a>
+
+      <li class="nav-item me-3">
+        <button id="theme-toggle" class="btn btn-sm btn-outline-dark">🌙 / ☀️</button>
+      </li>
+      
+      <div id="extra-logos" class="d-flex flex-row align-items-center">
+        <a href="https://rollballindia.org/" target="_blank">
+         <div class="RBFI me-2"></div>
+        </a>
+       
+        <a href="https://maharashtrarollball.org/" target="_blank">
+          <div class="MRBA me-2"></div>
+        </a>
+      </div>
+
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="doc.html">Documents</a></li>
+          <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
+          <li class="nav-item"><a class="nav-link" href="gal.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div style="height: 100px;"></div>
+
+  <!-- Terms Section -->
+  <section class="content-info">
+    <div class="container content-box">
+      <div class="panel-box">
+        <div class="titles">
+          <h4>Terms and Conditions</h4>
+        </div>
+
+        <div class="info-panel">
+          <p>
+            These terms and conditions ("Terms") govern your use of the website and services provided by
+            <i>International Roll Ball Federation</i> ("we," "our," or "us"). By accessing or using our website, you agree
+            to comply with and be bound by these Terms. If you do not agree with these Terms, please do not use our
+            website or services.
+          </p>
+
+          <h5>1. Acceptance of Terms</h5>
+          <p>1.1. You agree to abide by these Terms, which may be updated from time to time. It is your responsibility to review these Terms periodically.</p>
+          <p>1.2. We reserve the right to modify or discontinue any aspect of our website or services at any time.</p>
+
+          <h5>3. Use of Website and Services</h5>
+          <p>3.1. You agree not to use our website or services for any unlawful or prohibited purpose, or in any way that may violate these Terms.</p>
+          <p>3.2. You are solely responsible for your interactions with other users and the content you post.</p>
+
+          <h5>4. Intellectual Property</h5>
+          <p>4.1. All content and materials on our website, including text, graphics, logos, images, videos, and software, are owned by or licensed to us and are protected by copyright and other intellectual property rights.</p>
+          <p>4.2. You may not use, reproduce, distribute, or create derivative works from any content on our website without our express written permission.</p>
+
+          <h5>5. Third-Party Links</h5>
+          <p>5.1. Our website may contain links to third-party websites. These links are provided for your convenience, and we do not endorse or control the content on third-party sites.</p>
+          <p>5.2. We are not responsible for the content, privacy policies, or terms of use of third-party websites.</p>
+
+          <h5>6. Disclaimer of Warranties</h5>
+          <p>6.1. Our website and services are provided "as is" and "as available" without any warranties of any kind, either express or implied.</p>
+          <p>6.2. We make no representations or warranties regarding the accuracy, completeness, or reliability of our website's content.</p>
+
+          <h5>7. Limitation of Liability</h5>
+          <p>7.1. In no event shall <i>International Roll Ball Federation</i> be liable for any indirect, consequential, or punitive damages, or for any loss of profits or revenue arising from the use of our website or services.</p>
+          <p>7.2. Our liability is limited to the maximum extent permitted by law.</p>
+
+          <h5>8. Governing Law</h5>
+          <p>8.1. These Terms are governed by the laws of the Government of India, and any disputes shall be subject to the exclusive jurisdiction of the courts in Pune, Maharashtra.</p>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <footer>
+    <div class="container">
+      <div class="row text-center text-md-start">
+        <div class="col-md-4 col-12 mb-4">
+          <div class="title">Important Links</div>
+          <div class="footer-menu">
+            <ul>
+              <li><a href="contact.html">Contact Us</a></li>
+              <li><a href="about.html">About Us</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-4 col-12 mb-4">
+          <div class="title">Development Activities</div>
+          <div class="footer-menu">
+            <ul>
+              <li><a href="coach.html">Coaching</a></li>
+              <li><a href="t&c.html">Terms & conditions</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-4 col-12 mb-4">
+          <div class="title">Contact</div>
+          <div class="footer-menu">
+            <ul>
+              <li>Email:<a href="mailto:rollballnashik2002@gmail.com">:rollballnashik2002@gmail.com</a></li>
+              <li>Phone: <a href="tel:7249074416">7249074416</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-4">
+        &copy; Rollball nashik. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+ <script>
+    // Function to apply theme
+    function applyTheme(theme) {
+      if (theme === 'dark') {
+        document.body.classList.add('dark');
+        document.getElementById('theme-toggle').textContent = '☀️'; // next mode is light
+      } else {
+        document.body.classList.remove('dark');
+        document.getElementById('theme-toggle').textContent = '🌙'; // next mode is dark
+      }
+    }
+
+    // Load theme from localStorage on page load
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    applyTheme(savedTheme);
+
+    // Toggle theme button
+    document.getElementById('theme-toggle').addEventListener('click', () => {
+      const currentTheme = document.body.classList.contains('dark') ? 'dark' : 'light';
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      applyTheme(newTheme);
+      localStorage.setItem('theme', newTheme);
+    });
+  </script>
+
+</body>
+</html>
+``
